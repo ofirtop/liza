@@ -48,8 +48,6 @@ function App() {
     setselectedAnswer(answer);
     setSelectedPrice(parseInt(e.target.childNodes[0].data));
     setTouched(touched.concat(e.target.dataset.touched));
-    // e.target.classList.add('touch');
-    // cell.current.classList.add('touch');
   };
   const onChangeHandler = (e) => {
     console.log(e.target.files);
@@ -62,7 +60,7 @@ function App() {
       setselectedQuestion(null);
     }
   };
-
+  //load configuration file
   function loadCache(file) {
     var reader = new FileReader();
 
