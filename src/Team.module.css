@@ -1,0 +1,45 @@
+.Team {
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  width: 100px;
+  height: 100px;
+  box-shadow: 5px 3px 13px 0px rgba(0, 0, 0, 0.75);
+}
+.teamName {
+  text-align: center;
+  /* border: 1px solid red; */
+  font-size: 14px;
+  font-weight: 700;
+}
+.plus,
+.minus {
+  width: 30px;
+  height: 30px;
+  /* border: 1px solid black; */
+  font-size: 30px;
+  padding-top: 0;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plus:hover,
+.minus:hover {
+  box-shadow: 1px 8px 20px -5px rgba(0, 0, 0, 0.75);
+}
+.plus {
+  color: green;
+}
+.minus {
+  color: red;
+}
+.score {
+  width: 100%;
+  text-align: center;
+  border: 1px solid black;
+  background-color: chartreuse;
+}
+.actionLine {
+  display: flex;
+  justify-content: space-around;
+}
