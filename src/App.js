@@ -4,7 +4,7 @@ import Team from './Team';
 function App() {
   const [table, setTable] = useState();
   const [selectedQuestion, setselectedQuestion] = useState();
-  const [selectedPrice, setSelectedPrice] = useState();
+  const [selectedPrice, setSelectedPrice] = useState(0);
   const [selectedAnswer, setselectedAnswer] = useState();
   const [visibleAnswer, setVisibleAnswer] = useState();
   const [touched, setTouched] = useState([]);
