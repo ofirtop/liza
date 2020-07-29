@@ -10,7 +10,7 @@ const Team = ({ teamNumber, teamsScore, setTeamsScore, selectedPrice }) => {
   };
   return (
     <div className={styles.Team}>
-      <div className={styles.teamName}>Team {teamNumber}</div>
+      <div className={styles.teamName}>Team {teamNumber + 1}</div>
       <hr />
       <div className={styles.score}>{teamsScore[teamNumber]}</div>
       <div className={styles.actionLine}>
