@@ -78,10 +78,13 @@ td:hover {
   letter-spacing: 10px;
   margin: 10px auto 0 auto;
   text-align: left;
-  background-color: goldenrod;
+  background-color: aquamarine;
+}
+.question {
+  border: 3px solid #daa520;
+  padding-left: 10px;
 }
 .answer {
-  background-color: aquamarine;
   position: fixed;
   top: -25px;
   left: 0;
