@@ -79,10 +79,10 @@ td:hover {
   margin: 10px auto 0 auto;
   text-align: left;
   background-color: aquamarine;
-}
-.question {
   border: 3px solid #daa520;
   padding-left: 10px;
+}
+.question {
 }
 .answer {
   position: fixed;
@@ -125,7 +125,8 @@ td:hover {
   width: 87px;
 }
 .hidden {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
 .touched {
@@ -136,10 +137,11 @@ td:hover {
   border: 5px solid red;
 }
 .scoreTable {
-  transform: translateY(-50px);
+  /* transform: translateY(-50px); */
   height: 50px;
   display: flex;
   z-index: 10;
+  margin: 20px 0 0 20px;
 }
 @media (max-width: 600px) {
   h1 {

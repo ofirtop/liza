@@ -4,7 +4,7 @@ import Team from './Team';
 
 function App() {
   const [table, setTable] = useState();
-  const [selectedQuestion, setselectedQuestion] = useState();
+  const [selectedQuestion, setselectedQuestion] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(0);
   const [selectedAnswer, setselectedAnswer] = useState();
   const [visibleAnswer, setVisibleAnswer] = useState();
@@ -82,7 +82,9 @@ function App() {
           <thead>{<tr>{headingTable}</tr>}</thead>
           <tbody>{tableContent}</tbody>
         </table>
-        <div className="question">{selectedQuestion}</div>
+        <div className={`question ${selectedQuestion === null ? 'hidden' : null}`} display>
+          {selectedQuestion}
+        </div>
         <div className="answer hidden" ref={answerOutput}>
           <i className="material-icons green-text closeAnswer" onClick={toggleAnswerVisibilityHandler}>
             close
