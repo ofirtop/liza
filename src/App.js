@@ -1,6 +1,7 @@
 import React, { useState, useRef, Fragment } from 'react';
 import './App.css';
 import Team from './Team';
+
 function App() {
   const [table, setTable] = useState();
   const [selectedQuestion, setselectedQuestion] = useState();
@@ -8,10 +9,7 @@ function App() {
   const [selectedAnswer, setselectedAnswer] = useState();
   const [visibleAnswer, setVisibleAnswer] = useState();
   const [touched, setTouched] = useState([]);
-
-  const [scoreTeam1, setScoreTeam1] = useState(0);
-  const [scoreTeam2, setScoreTeam2] = useState(0);
-  const [scoreTeam3, setScoreTeam3] = useState(0);
+  const [teamsScore, setTeamsScore] = useState([0, 0, 0]);
 
   const answerOutput = useRef();
 
@@ -25,7 +23,6 @@ function App() {
       return (
         <tr key={Math.random()}>
           {row.rowItems.map((rowItem, columnIndex) => (
-            //data-touched={touched.contains}
             <td
               data-touched={`${columnIndex}-${rowIndex}`}
               className={touched.includes(`${columnIndex}-${rowIndex}`) ? 'touched' : ''}
@@ -94,9 +91,16 @@ function App() {
         </div>
       </div>
       <div className="scoreTable">
-        <Team teamNumber={1} score={scoreTeam1} setScore={setScoreTeam1} selectedPrice={selectedPrice} />
-        <Team teamNumber={2} score={scoreTeam2} setScore={setScoreTeam2} selectedPrice={selectedPrice} />
-        <Team teamNumber={3} score={scoreTeam3} setScore={setScoreTeam3} selectedPrice={selectedPrice} />
+        {teamsScore.map((score, index) => {
+          return (
+            <Team
+              teamNumber={index}
+              teamsScore={teamsScore}
+              setTeamsScore={setTeamsScore}
+              selectedPrice={selectedPrice}
+            />
+          );
+        })}
       </div>
     </Fragment>
   );
