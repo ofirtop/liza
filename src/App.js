@@ -48,7 +48,7 @@ function App() {
   };
   const onChangeHandler = (e) => {
     console.log(e.target.files);
-    loadCache(e.target.files[0]);
+    loadConfigurationFile(e.target.files[0]);
   };
   const toggleAnswerVisibilityHandler = () => {
     setVisibleAnswer(!visibleAnswer);
@@ -58,7 +58,7 @@ function App() {
     }
   };
   //load configuration file
-  function loadCache(file) {
+  function loadConfigurationFile(file) {
     var reader = new FileReader();
 
     reader.onload = function (evt) {
