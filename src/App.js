@@ -1,6 +1,20 @@
 import React, { useState, useRef, Fragment } from 'react';
 import './App.css';
 import Team from './Team';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '0 30px',
+  },
+});
 
 function App() {
   const [table, setTable] = useState();
@@ -13,6 +27,8 @@ function App() {
 
   const QAOutput = useRef();
   const answerOutput = useRef();
+
+  const classes = useStyles();
 
   let headingTable = null;
   let tableContent = null;
@@ -78,10 +94,21 @@ function App() {
     <Fragment>
       <div className="main">
         <div className="header">
-          <input type="file" name="file" onChange={onChangeHandler} className="upload" />
-
           <h1>Lizuchka's Ultimate Game</h1>
-          <button onClick={toggleQAVisibilityHandler}>Show Answer</button>
+          <label htmlFor="upload-file">
+            <input
+              style={{ display: 'none' }}
+              id="upload-file"
+              name="upload-file"
+              type="file"
+              onChange={onChangeHandler}
+            />
+
+            {/* <Button className={classes.root}> */}
+            <Button className={classes.root} color="secondary" variant="contained" component="span">
+              Upload File
+            </Button>
+          </label>
         </div>
 
         <table>
