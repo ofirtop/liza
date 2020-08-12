@@ -80,7 +80,6 @@ td:hover {
   text-align: center;
   background-color: aquamarine;
   margin-top: 250px;
-  /* border: 3px solid #daa520; */
   padding-left: 10px;
 }
 .answer {
@@ -134,6 +133,7 @@ td:hover {
 .touched {
   text-decoration: line-through;
   cursor: not-allowed;
+  background-color: lightgreen;
 }
 .touched:hover {
   border: 5px solid red;
