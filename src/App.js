@@ -7,10 +7,11 @@ function App() {
   const [selectedQuestion, setselectedQuestion] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(0);
   const [selectedAnswer, setselectedAnswer] = useState();
-  const [visibleAnswer, setVisibleAnswer] = useState();
+  const [visibleQA, setVisibleQA] = useState();
   const [touched, setTouched] = useState([]);
   const [teamsScore, setTeamsScore] = useState([0, 0, 0]);
 
+  const QAOutput = useRef();
   const answerOutput = useRef();
 
   let headingTable = null;
@@ -45,17 +46,22 @@ function App() {
     setselectedAnswer(answer);
     setSelectedPrice(parseInt(e.target.childNodes[0].data));
     setTouched(touched.concat(e.target.dataset.touched));
+    toggleQAVisibilityHandler();
   };
   const onChangeHandler = (e) => {
     console.log(e.target.files);
     loadConfigurationFile(e.target.files[0]);
   };
-  const toggleAnswerVisibilityHandler = () => {
-    setVisibleAnswer(!visibleAnswer);
-    answerOutput.current.classList.toggle('hidden');
-    if (visibleAnswer) {
+  const toggleQAVisibilityHandler = () => {
+    setVisibleQA(!visibleQA);
+    QAOutput.current.classList.toggle('hidden');
+    if (visibleQA) {
       setselectedQuestion(null);
+      answerOutput.current.classList.toggle('hidden');
     }
+  };
+  const toggleAnswerVisibilityHandler = () => {
+    answerOutput.current.classList.toggle('hidden');
   };
   //load configuration file
   function loadConfigurationFile(file) {
@@ -75,21 +81,26 @@ function App() {
           <input type="file" name="file" onChange={onChangeHandler} className="upload" />
 
           <h1>Lizuchka's Ultimate Game</h1>
-          <button onClick={toggleAnswerVisibilityHandler}>Show Answer</button>
+          <button onClick={toggleQAVisibilityHandler}>Show Answer</button>
         </div>
 
         <table>
           <thead>{<tr>{headingTable}</tr>}</thead>
           <tbody>{tableContent}</tbody>
         </table>
-        <div className={`question ${selectedQuestion === null ? 'hidden' : null}`} display>
-          {selectedQuestion}
-        </div>
-        <div className="answer hidden" ref={answerOutput}>
-          <i className="material-icons green-text closeAnswer" onClick={toggleAnswerVisibilityHandler}>
+        <div className="answer hidden" ref={QAOutput}>
+          <i className="material-icons green-text closeAnswer" onClick={toggleQAVisibilityHandler}>
             close
           </i>
-          <div className="answerContent">{selectedAnswer}</div>
+          <div className={`question ${selectedQuestion === null ? 'hidden' : null}`} display>
+            {selectedQuestion}
+            <p className="demo-link" onClick={toggleAnswerVisibilityHandler}>
+              click <span className="underline">here</span> to see the answer
+            </p>
+          </div>
+          <div className="answerContent hidden" ref={answerOutput}>
+            {selectedAnswer}
+          </div>
         </div>
       </div>
       <div className="scoreTable">
