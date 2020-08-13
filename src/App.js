@@ -115,7 +115,21 @@ function App() {
           <thead>{<tr>{headingTable}</tr>}</thead>
           <tbody>{tableContent}</tbody>
         </table>
-        <div className="answer hidden" ref={QAOutput}>
+        <div className="qaPanel hidden" ref={QAOutput}>
+          <i className="material-icons green-text closeAnswer" onClick={toggleQAVisibilityHandler}>
+            close
+          </i>
+          <div className={`question ${selectedQuestion === null ? 'hidden' : null}`} display>
+            {selectedQuestion}
+            <p className="demo-link" onClick={toggleAnswerVisibilityHandler}>
+              click <span className="underline">here</span> to see the answer
+            </p>
+          </div>
+          <div className="answer hidden" ref={answerOutput}>
+            {selectedAnswer}
+          </div>
+        </div>
+        {/* <div className="answer hidden" ref={QAOutput}>
           <i className="material-icons green-text closeAnswer" onClick={toggleQAVisibilityHandler}>
             close
           </i>
@@ -128,7 +142,7 @@ function App() {
           <div className="answerContent hidden" ref={answerOutput}>
             {selectedAnswer}
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="scoreTable">
         {teamsScore.map((score, index) => {
