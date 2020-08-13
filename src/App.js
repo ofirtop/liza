@@ -21,7 +21,7 @@ function App() {
   const [selectedQuestion, setselectedQuestion] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(0);
   const [selectedAnswer, setselectedAnswer] = useState();
-  const [visibleQA, setVisibleQA] = useState();
+  // const [visibleQA, setVisibleQA] = useState();
   const [touched, setTouched] = useState([]);
   const [teamsScore, setTeamsScore] = useState([0, 0, 0]);
 
@@ -69,11 +69,12 @@ function App() {
     loadConfigurationFile(e.target.files[0]);
   };
   const toggleQAVisibilityHandler = () => {
-    setVisibleQA(!visibleQA);
+    // setVisibleQA(!visibleQA);
     QAOutput.current.classList.toggle('hidden');
-    if (visibleQA) {
+    //if returning to main panel reset question and put 'hidden' on answer panel
+    if (QAOutput.current.classList.contains('hidden')) {
       setselectedQuestion(null);
-      answerOutput.current.classList.toggle('hidden');
+      answerOutput.current.classList.add('hidden');
     }
   };
   const toggleAnswerVisibilityHandler = () => {
